@@ -11,13 +11,18 @@ st.set_page_config(layout='wide')
 
 css_str = """
 <style>
-             [data-testid='stWidgetLabel'] p {
+             label[data-testid="stWidgetLabel"] p, [data-testid="stNotificationContentInfo"] p, [data-testid="stMarkdownContainer"] p{
                  font-size: 20px;
                  font-family: system-ui; 
 
-             }          
+             }   
+             [data-testid="stElementToolbar"] {
+                    display: none;
+                }    
+   
 </style>
 """
+
 st.markdown(css_str, unsafe_allow_html= True)
 
 

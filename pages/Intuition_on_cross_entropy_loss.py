@@ -12,7 +12,10 @@ css_str = """
                  font-size: 20px;
                  font-family: system-ui; 
 
-             }       
+             }   
+             [data-testid="stElementToolbar"] {
+                    display: none;
+                }    
    
 </style>
 """

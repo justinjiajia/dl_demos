@@ -13,10 +13,14 @@ css_str = """
                  font-size: 20px;
                  font-family: system-ui; 
 
-             }       
+             }   
+             [data-testid="stElementToolbar"] {
+                    display: none;
+                }    
    
 </style>
 """
+
 st.markdown(css_str, unsafe_allow_html= True)
 
 st.header("Training data")
