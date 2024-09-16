@@ -4,3 +4,5 @@ plotly==5.22.0
 vega-datasets==0.9.0
 matplotlib==3.8.4
 matplotlib-inline==0.1.6
+scikit-learn==1.4.2
+seaborn==0.13.2
