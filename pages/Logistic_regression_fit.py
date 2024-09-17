@@ -124,11 +124,11 @@ fig_3d = go.Figure(go.Surface(x=xx1, y=xx2, z=log_surf, colorscale=["Silver", "S
                     ))
 
 fig_3d.add_trace(go.Scatter3d(x=df.loc[df['malignancy']==1, 'size'], y=df.loc[df['malignancy']==1, 'age'], z=np.ones(13),
-                               mode="markers",  hovertemplate="",
+                               mode="markers",  hovertemplate="Positive example<br>Size = %{x}<br>Age = %{y}<extra></extra>",
                                marker=dict(symbol='x', size=4, color="#E94235",  line_width=0)))
 
 fig_3d.add_trace(go.Scatter3d(x=df.loc[df['malignancy']==0, 'size'], y=df.loc[df['malignancy']==0, 'age'], z=np.zeros(12), 
-                              mode="markers",  hovertemplate="",
+                              mode="markers",  hovertemplate="Negative example<br>Size = %{x}<br>Age = %{y}<extra></extra>",
                                marker=dict(symbol='circle-open', size=10, 
                                            color="#6699FF", line=dict(color="#6699FF", width=32))
                 )
@@ -151,7 +151,7 @@ yx_ends = (-b - w2 * yy_ends)/ w1
 fig_3d.add_trace(go.Mesh3d(x=np.repeat(xx_ends, 2), y=np.repeat(xy_ends, 2), z=np.array([0, 1] * 2), 
                            i=[0, 1],
                            j=[1, 3],
-                           k=[2, 2], color='#FF40FF', opacity=0.1, hovertemplate=""))
+                           k=[2, 2], color='#FF40FF', opacity=0.1, hovertemplate="<extra></extra>"))
 
 # the two horizontal planes
 
@@ -159,11 +159,11 @@ if w2 < 0:
 
     fig_3d.add_trace(go.Mesh3d(x=np.array([xx_ends[0], 2, yx_ends[1]]), 
                             y=np.array([xy_ends[0], 60, yy_ends[1]]), z=np.array([0.5] * 3), 
-                            color="#6699FF", opacity=0.1, hovertemplate=""))  # blue-ish
+                            color="#6699FF", opacity=0.1, hovertemplate="<extra></extra>"))  # blue-ish
     
     fig_3d.add_trace(go.Mesh3d(x=np.array([yx_ends[0], 10, xx_ends[1]]), 
                             y=np.array([yy_ends[0], 15, xy_ends[1]]), z=np.array([0.5] * 3), 
-                            color="#E94235", opacity=0.1, hovertemplate="")) # red-ish
+                            color="#E94235", opacity=0.1, hovertemplate="<extra></extra>")) # red-ish
 
 if w2 == 0:
 
@@ -173,30 +173,30 @@ if w2 == 0:
                             i=[0, 2],
                             j=[1, 3],
                             k=[2, 0],  
-                            color="#6699FF", opacity=0.1, hovertemplate=""))
+                            color="#6699FF", opacity=0.1, hovertemplate="<extra></extra>"))
     
     fig_3d.add_trace(go.Mesh3d(x=np.array([xx_ends[0], 10, 10, xx_ends[1]]), 
                             y=np.array([xy_ends[0], 15, 60, xy_ends[1]]), z=np.array([0.5] * 4), 
                             i=[0, 2],
                             j=[1, 3],
                             k=[2, 0],  
-                            color="#E94235", opacity=0.1, hovertemplate=""))
+                            color="#E94235", opacity=0.1, hovertemplate="<extra></extra>"))
     
 if w2 > 0:
 
     fig_3d.add_trace(go.Mesh3d(x=np.array([xx_ends[0], 2, yx_ends[0]]), 
                             y=np.array([xy_ends[0], 15, yy_ends[0]]), z=np.array([0.5] * 3), 
-                            color="#6699FF", opacity=0.1, hovertemplate=""))
+                            color="#6699FF", opacity=0.1, hovertemplate="<extra></extra>"))
     
     fig_3d.add_trace(go.Mesh3d(x=np.array([yx_ends[1], 10, xx_ends[1]]), 
                             y=np.array([yy_ends[1], 60, xy_ends[1]]), z=np.array([0.5] * 3), 
-                            color="#E94235", opacity=0.1, hovertemplate=""))
+                            color="#E94235", opacity=0.1, hovertemplate="<extra></extra>"))
 
 
 
 #https://plotly.github.io/plotly.py-docs/generated/plotly.graph_objects.Scatter3d.html
 fig_3d.add_trace(go.Scatter3d(x=xx_ends, y=xy_ends, z=[0.5, 0.5],  
-                              mode="lines", line=dict(color='#FF40FF', width=8), hovertemplate=""))
+                              mode="lines", line=dict(color='#FF40FF', width=8), hovertemplate="<extra></extra>"))
 
 
 camera = {'center': {'x': 0, 'y': 0, 'z': 0},
