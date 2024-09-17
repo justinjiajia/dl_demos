@@ -54,7 +54,7 @@ intercept, slope = fit_model(df)
 
 @st.cache_data
 def data_for_decision_boundary():
-    x_eval = np.linspace(1, 12, 30)
+    x_eval = np.linspace(2, 10, 30)
     return x_eval
 
 x_eval = data_for_decision_boundary()
@@ -85,7 +85,7 @@ if w2 == 0.0:
 else:    
     ax.plot(x_eval , (-b - w1 * x_eval)/ w2, c='#FF40FF', lw=1.2)
 
-ax.set( ylim=[15, 60], xlim=(1.8, 10.4),)
+ax.set( ylim=[15, 60], xlim=(2, 10),)
 ax.tick_params(axis='both', which='major', labelsize=4, labelfontfamily="monospace")
 ax.set_xlabel('Size', fontsize=6, fontfamily="monospace")
 ax.set_ylabel('Age', fontsize=6, fontfamily="monospace")
@@ -142,19 +142,26 @@ else:
 
 
 # https://stackoverflow.com/questions/77265426/python-plotly-planes-perpendicular-to-axes-in-3d-plot
+# the vertical plane
 fig_3d.add_trace(go.Mesh3d(x=np.repeat(x_ends, 2), y=np.repeat(y_ends, 2), z=np.array([0, 1] * 2), 
                            i=[0, 1],
                            j=[1, 3],
                            k=[2, 2], color='#FF40FF', opacity=0.1, hovertemplate=""))
 
+# the two horizontal planes
 
-fig_3d.add_trace(go.Mesh3d(x=np.array([x_ends[0], x_ends[0], x_ends[1]]), 
-                           y=np.array([y_ends[1], y_ends[0], y_ends[1]]), z=np.array([0.5] * 3), 
-                           color="#6699FF", opacity=0.1, hovertemplate=""))
+# fig_3d.add_trace(go.Mesh3d(x=np.array([x_ends[0], x_ends[0], x_ends[1], x_ends[1], x_ends[0]]), 
+#                           y=np.array([y_ends[1], y_ends[0], y_ends[1], 15, 15]), z=np.array([0.5] * 5),
+#                           i = [0, 0, 4],
+#                           j = [1, 3, 3],
+#                           k = [2, 2, 0], 
+#                           color="#6699FF", opacity=0.1, hovertemplate=""))   # blue-ish
 
-fig_3d.add_trace(go.Mesh3d(x=np.array([x_ends[0], x_ends[1], x_ends[1]]), 
-                           y=np.array([y_ends[0], y_ends[0], y_ends[1]]), z=np.array([0.5] * 3), 
-                           color="#E94235", opacity=0.1, hovertemplate=""))
+ 
+
+#fig_3d.add_trace(go.Mesh3d(x=np.array([x_ends[0], x_ends[1], x_ends[1]]), 
+#                           y=np.array([y_ends[0], y_ends[0], y_ends[1]]), z=np.array([0.5] * 3), 
+#                           color="#E94235", opacity=0.1, hovertemplate=""))    # red-ish
 
 #https://plotly.github.io/plotly.py-docs/generated/plotly.graph_objects.Scatter3d.html
 fig_3d.add_trace(go.Scatter3d(x=x_ends, y=y_ends, z=[0.5, 0.5],  
@@ -166,7 +173,7 @@ camera = {'center': {'x': 0, 'y': 0, 'z': 0},
           'up': {'x': 0, 'y': 0, 'z': 1}}
 
 fig_3d.update_layout(font=dict(family="Courier New, monospace", size=12),
-                     scene=dict(xaxis = dict(title='Size', range=(1.8, 10.4), showspikes=False), 
+                     scene=dict(xaxis = dict(title='Size', range=(2, 10), showspikes=False), 
                                 yaxis = dict(title_text='Age', range=[15, 60], showspikes=False),
                                 zaxis = dict(title_text="Model prediction", range=[0, 1], showspikes=False),
                                 camera=camera),
