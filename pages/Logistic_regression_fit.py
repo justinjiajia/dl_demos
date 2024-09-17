@@ -155,28 +155,15 @@ fig_3d.add_trace(go.Mesh3d(x=np.repeat(xx_ends, 2), y=np.repeat(xy_ends, 2), z=n
 
 # the two horizontal planes
 
-#fig_3d.add_trace(go.Mesh3d(x=np.array([yx_ends[1], yx_ends[1], yx_ends[0], 2, 2]), 
-#                           y=np.array([yy_ends[0], yy_ends[1], yy_ends[0], yy_ends[0], yy_ends[1]]), z=np.array([0.5] * 5),
-#                           i=[0, 0, 3],
-#                           j=[1, 1, 4],
-#                           k=[2, 3, 1],  
-#                           color="#6699FF", opacity=0.1, hovertemplate=""))   # blue-ish
-
-
-#fig_3d.add_trace(go.Mesh3d(x=np.array([xx_ends[0], xx_ends[1], xx_ends[1]]), 
-#                           y=np.array([xy_ends[0], xy_ends[0], xy_ends[1]]), z=np.array([0.5] * 3), 
-#                        color="#E94235", opacity=0.1, hovertemplate=""))    # red-ish
- 
-
 if w2 < 0:
 
     fig_3d.add_trace(go.Mesh3d(x=np.array([xx_ends[0], 2, yx_ends[1]]), 
                             y=np.array([xy_ends[0], 60, yy_ends[1]]), z=np.array([0.5] * 3), 
-                            color="#6699FF", opacity=0.1, hovertemplate=""))
+                            color="#6699FF", opacity=0.1, hovertemplate=""))  # blue-ish
     
     fig_3d.add_trace(go.Mesh3d(x=np.array([yx_ends[0], 10, xx_ends[1]]), 
                             y=np.array([yy_ends[0], 15, xy_ends[1]]), z=np.array([0.5] * 3), 
-                            color="#E94235", opacity=0.1, hovertemplate=""))
+                            color="#E94235", opacity=0.1, hovertemplate="")) # red-ish
 
 if w2 == 0:
 
