@@ -55,9 +55,10 @@ intercept, slope = fit_model(df)
 @st.cache_data
 def data_for_decision_boundary():
     x_eval = np.linspace(2, 10, 30)
-    return x_eval
+    y_eval = np.linspace(15, 60, 30)
+    return x_eval, y_eval
 
-x_eval = data_for_decision_boundary()
+x_eval, y_eval = data_for_decision_boundary()
 
 col1, *_ = st.columns(3)
 col2, col3, _ = st.columns(3)
@@ -85,7 +86,9 @@ if w2 == 0.0:
 else:    
     ax.plot(x_eval , (-b - w1 * x_eval)/ w2, c='#FF40FF', lw=1.2)
 
-ax.set( ylim=[15, 60], xlim=(2, 10),)
+
+
+ax.set( ylim=[15, 60], xlim=(2, 10))
 ax.tick_params(axis='both', which='major', labelsize=4, labelfontfamily="monospace")
 ax.set_xlabel('Size', fontsize=6, fontfamily="monospace")
 ax.set_ylabel('Age', fontsize=6, fontfamily="monospace")
@@ -127,44 +130,85 @@ fig_3d.add_trace(go.Scatter3d(x=df.loc[df['malignancy']==1, 'size'], y=df.loc[df
 fig_3d.add_trace(go.Scatter3d(x=df.loc[df['malignancy']==0, 'size'], y=df.loc[df['malignancy']==0, 'age'], z=np.zeros(12), 
                               mode="markers",  hovertemplate="",
                                marker=dict(symbol='circle-open', size=10, 
-                                           color="#6699FF", 
-                                           line=dict(color="#6699FF", width=32))
-                            ))
+                                           color="#6699FF", line=dict(color="#6699FF", width=32))
+                )
+)
 
 
 
 if w2 == 0.0:
-    x_ends = np.array([-b/w1, -b/w1])
-    y_ends = np.array([15, 60])
+    xx_ends = np.array([-b/w1, -b/w1])
+    xy_ends = np.array([15, 60])
 else: 
-    x_ends = np.array([x_eval[0],  x_eval[-1]])
-    y_ends = (-b - w1 * x_ends)/ w2
+    xx_ends = np.array([x_eval[0],  x_eval[-1]])
+    xy_ends = (-b - w1 * xx_ends)/ w2
 
+yy_ends = np.array([y_eval[0],  y_eval[-1]])
+yx_ends = (-b - w2 * yy_ends)/ w1
 
 # https://stackoverflow.com/questions/77265426/python-plotly-planes-perpendicular-to-axes-in-3d-plot
 # the vertical plane
-fig_3d.add_trace(go.Mesh3d(x=np.repeat(x_ends, 2), y=np.repeat(y_ends, 2), z=np.array([0, 1] * 2), 
+fig_3d.add_trace(go.Mesh3d(x=np.repeat(xx_ends, 2), y=np.repeat(xy_ends, 2), z=np.array([0, 1] * 2), 
                            i=[0, 1],
                            j=[1, 3],
                            k=[2, 2], color='#FF40FF', opacity=0.1, hovertemplate=""))
 
 # the two horizontal planes
 
-# fig_3d.add_trace(go.Mesh3d(x=np.array([x_ends[0], x_ends[0], x_ends[1], x_ends[1], x_ends[0]]), 
-#                           y=np.array([y_ends[1], y_ends[0], y_ends[1], 15, 15]), z=np.array([0.5] * 5),
-#                           i = [0, 0, 4],
-#                           j = [1, 3, 3],
-#                           k = [2, 2, 0], 
+#fig_3d.add_trace(go.Mesh3d(x=np.array([yx_ends[1], yx_ends[1], yx_ends[0], 2, 2]), 
+#                           y=np.array([yy_ends[0], yy_ends[1], yy_ends[0], yy_ends[0], yy_ends[1]]), z=np.array([0.5] * 5),
+#                           i=[0, 0, 3],
+#                           j=[1, 1, 4],
+#                           k=[2, 3, 1],  
 #                           color="#6699FF", opacity=0.1, hovertemplate=""))   # blue-ish
 
+
+#fig_3d.add_trace(go.Mesh3d(x=np.array([xx_ends[0], xx_ends[1], xx_ends[1]]), 
+#                           y=np.array([xy_ends[0], xy_ends[0], xy_ends[1]]), z=np.array([0.5] * 3), 
+#                        color="#E94235", opacity=0.1, hovertemplate=""))    # red-ish
  
 
-#fig_3d.add_trace(go.Mesh3d(x=np.array([x_ends[0], x_ends[1], x_ends[1]]), 
-#                           y=np.array([y_ends[0], y_ends[0], y_ends[1]]), z=np.array([0.5] * 3), 
-#                           color="#E94235", opacity=0.1, hovertemplate=""))    # red-ish
+if w2 < 0:
+
+    fig_3d.add_trace(go.Mesh3d(x=np.array([xx_ends[0], 2, yx_ends[1]]), 
+                            y=np.array([xy_ends[0], 60, yy_ends[1]]), z=np.array([0.5] * 3), 
+                            color="#6699FF", opacity=0.1, hovertemplate=""))
+    
+    fig_3d.add_trace(go.Mesh3d(x=np.array([yx_ends[0], 10, xx_ends[1]]), 
+                            y=np.array([yy_ends[0], 15, xy_ends[1]]), z=np.array([0.5] * 3), 
+                            color="#E94235", opacity=0.1, hovertemplate=""))
+
+if w2 == 0:
+
+    fig_3d.add_trace(go.Mesh3d(x=np.array([2, xx_ends[0], xx_ends[1], 2]), 
+                            y=np.array([15, xy_ends[0], xy_ends[1], 60]), z=np.array([0.5] * 4), 
+                            # counter clockwise
+                            i=[0, 2],
+                            j=[1, 3],
+                            k=[2, 0],  
+                            color="#6699FF", opacity=0.1, hovertemplate=""))
+    
+    fig_3d.add_trace(go.Mesh3d(x=np.array([xx_ends[0], 10, 10, xx_ends[1]]), 
+                            y=np.array([xy_ends[0], 15, 60, xy_ends[1]]), z=np.array([0.5] * 4), 
+                            i=[0, 2],
+                            j=[1, 3],
+                            k=[2, 0],  
+                            color="#E94235", opacity=0.1, hovertemplate=""))
+    
+if w2 > 0:
+
+    fig_3d.add_trace(go.Mesh3d(x=np.array([xx_ends[0], 2, yx_ends[0]]), 
+                            y=np.array([xy_ends[0], 15, yy_ends[0]]), z=np.array([0.5] * 3), 
+                            color="#6699FF", opacity=0.1, hovertemplate=""))
+    
+    fig_3d.add_trace(go.Mesh3d(x=np.array([yx_ends[1], 10, xx_ends[1]]), 
+                            y=np.array([yy_ends[1], 60, xy_ends[1]]), z=np.array([0.5] * 3), 
+                            color="#E94235", opacity=0.1, hovertemplate=""))
+
+
 
 #https://plotly.github.io/plotly.py-docs/generated/plotly.graph_objects.Scatter3d.html
-fig_3d.add_trace(go.Scatter3d(x=x_ends, y=y_ends, z=[0.5, 0.5],  
+fig_3d.add_trace(go.Scatter3d(x=xx_ends, y=xy_ends, z=[0.5, 0.5],  
                               mode="lines", line=dict(color='#FF40FF', width=8), hovertemplate=""))
 
 
