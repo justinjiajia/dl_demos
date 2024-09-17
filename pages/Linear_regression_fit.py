@@ -93,8 +93,8 @@ ax.scatter(x, y, s=30, c='r', alpha=0.6, linewidths=0)
 ax.plot(x_eval, intercept + slope * x_eval, c=(66/255, 133/255, 244/255, 1), linewidth=1.5)    
 
 ax.set(xlim=(0.5, 5), ylim=(-30, 720))
-ax.set_xlabel('Size', fontsize=8, fontfamily="monospace")
-ax.set_ylabel('Price', fontsize=8, fontfamily="monospace")
+ax.set_xlabel('x', fontsize=8, fontfamily="monospace")
+ax.set_ylabel('y', fontsize=8, fontfamily="monospace")
 ax.tick_params(axis='both', which='major', labelsize=6, labelfontfamily="monospace")
 ax.vlines(x, intercept + slope * x, y, alpha=0.3, color="k", lw=1)  
 
