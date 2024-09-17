@@ -18,7 +18,8 @@ css_str = """
                     display: none;
                 }    
 
-             #GithubIcon {visibility: hidden;
+             [data-testid="stToolbar"] {
+                visibility: hidden;
              }   
    
 </style>
