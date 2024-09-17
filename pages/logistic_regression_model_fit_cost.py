@@ -101,16 +101,56 @@ col1, col2 = st.columns(2)
 
 col1.pyplot(fig, use_container_width=False)
 
+st.divider()
+
 predictions = prediction(neg_examples.loc[:, "size":"age"].values , w1, w2, b)
 
 pred = pd.DataFrame({"label": 1, "prob": predictions, "index": neg_examples.loc[:, "index"].values})
 pred_r = pd.DataFrame({"label": 0, "prob": 1-predictions, "index": neg_examples.loc[:, "index"].values})
-pred_overall = pd.concat([pred_r, pred])
-pred_overall
+neg_pred_overall = pd.concat([pred_r, pred])
 
-g = sns.FacetGrid(pred_overall, col="index", col_wrap=7)
-g.map_dataframe(plt.bar,"label" , "prob", **dict(color=colors,  width=0.2))
-g.tick_params(labelfontfamily="monospace", labelsize=12)
-g.set(xlabel=None, ylabel=None, xlim=[-0.3, 1.3], ylim=[0, 1.1], xticks=[0, 1],)
-g.tight_layout()
-st.pyplot(g)
+
+predictions = prediction(pos_examples.loc[:, "size":"age"].values , w1, w2, b)
+pred = pd.DataFrame({"label": 1, "prob": predictions, "index": pos_examples.loc[:, "index"].values})
+pred_r = pd.DataFrame({"label": 0, "prob": 1-predictions, "index": pos_examples.loc[:, "index"].values})
+pos_pred_overall = pd.concat([pred_r, pred])
+
+# https://seaborn.pydata.org/generated/seaborn.FacetGrid.html
+g1 = sns.FacetGrid(neg_pred_overall, col="index", col_wrap=7)
+g1.map_dataframe(plt.bar,"label" , "prob", **dict(color=colors,  width=0.2))
+g1.tick_params(axis='x', which='major', labelfontfamily="monospace", labelsize=13, labelbottom=True)
+g1.tick_params(axis='y', which='major', labelsize=12, labelfontfamily="monospace")
+g1.set(xlabel=None, ylabel=None, xlim=[-0.3, 1.3], ylim=[0, 1.1], 
+      xticks=[0, 1], yticks=np.arange(0.0, 1.1, 0.2), xticklabels=['Benign', 'Malignant'] )
+# g.set_titles(col_template="")
+ 
+
+for idx, ax in enumerate(g1.axes.flat):
+    plt.setp(ax.get_xticklabels()[0], color="#4285f4")
+    plt.setp(ax.get_xticklabels()[1], color="#db4437")
+    ax.set_title(f"Benign example: {idx+1}", fontfamily="monospace", size=14)
+ 
+        
+
+# g.set_axis_labels(None, "Predictied probabilities")
+
+g1.tight_layout()
+st.pyplot(g1)
+
+
+g2 = sns.FacetGrid(pos_pred_overall, col="index", col_wrap=7)
+g2.map_dataframe(plt.bar,"label" , "prob", **dict(color=colors,  width=0.2))
+g2.tick_params(axis='x', which='major', labelfontfamily="monospace", labelsize=13, labelbottom=True)
+g2.tick_params(axis='y', which='major', labelsize=12, labelfontfamily="monospace")
+g2.set(xlabel=None, ylabel=None, xlim=[-0.3, 1.3], ylim=[0, 1.1], 
+      xticks=[0, 1], yticks=np.arange(0.0, 1.1, 0.2), xticklabels=['Benign', 'Malignant'] )
+# g.set_titles(col_template="")
+ 
+
+for idx, ax in enumerate(g2.axes.flat):
+    plt.setp(ax.get_xticklabels()[0], color="#4285f4")
+    plt.setp(ax.get_xticklabels()[1], color="#db4437")
+    ax.set_title(f"Malignant example: {idx+1}", fontfamily="monospace", size=14)
+
+g2.tight_layout()
+st.pyplot(g2)
