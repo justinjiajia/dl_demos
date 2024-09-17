@@ -17,7 +17,10 @@ css_str = """
              [data-testid="stElementToolbar"] {
                     display: none;
                 }    
-   
+             [data-testid="stToolbar"] {
+                visibility: hidden;
+             }   
+      
 </style>
 """
 

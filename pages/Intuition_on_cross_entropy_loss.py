@@ -16,7 +16,10 @@ css_str = """
              [data-testid="stElementToolbar"] {
                     display: none;
                 }    
-   
+             [data-testid="stToolbar"] {
+                visibility: hidden;
+             }   
+      
 </style>
 """
 st.markdown(css_str, unsafe_allow_html= True)
