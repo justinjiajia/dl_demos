@@ -17,6 +17,9 @@ css_str = """
              [data-testid="stElementToolbar"] {
                     display: none;
                 }    
+
+             #GithubIcon {visibility: hidden;
+             }   
    
 </style>
 """
