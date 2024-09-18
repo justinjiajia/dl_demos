@@ -1,8 +1,6 @@
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
-import pandas as pd
-import plotly.express as px
 from matplotlib.ticker import MultipleLocator
 
 st.set_page_config(layout='wide')
@@ -32,12 +30,12 @@ st.markdown(css_str, unsafe_allow_html= True)
 
 type_col, _, col, _ = st.columns([0.2, 0.1, 0.6, 0.1])
 
-type = type_col.selectbox("Select activation function", ["sigmoid", "relu"])
+type = type_col.selectbox("Select activation function", ["relu", "sigmoid", "linear"])
 
 col_1, col_2, col_3, col_4 = col.columns(4)
 
-l2_w_1 = col_1.slider(r"Select $w_1^{[2]}$", -2.0, 2.0, -1.3 if type == "relu" else -0.8)
-l2_w_2 = col_2.slider(r"Select $w_2^{[2]}$", -2.0, 2.0, 1.3 if type == "relu" else 0.6)
+l2_w_1 = col_1.slider(r"Select $w_1^{[2]}$", -2.0, 2.0,  -0.8 if type == "sigmoid" else -1.3 )
+l2_w_2 = col_2.slider(r"Select $w_2^{[2]}$", -2.0, 2.0, 0.6 if type == "sigmoid" else 1.3)
 l2_w_3 = col_3.slider(r"Select $w_2^{[2]}$", -2.0, 2.0, 0.66)
 l2_b = col_4.slider(r"Select $b^{[2]}$", -2.0, 2.0, -0.23)
 
@@ -48,6 +46,8 @@ def activation(z, type):
       return 1.0 /(1.0 + np.exp(-z * 5 )) # scale up
    elif type == "relu":
       return z * (z > 0.0)
+   else:
+      return z
 
 _, text_col, _ = st.columns([0.15, 0.55, 0.3])
 

@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 import matplotlib.pyplot as plt
-import matplotlib
 
 st.set_page_config(layout='wide')
 
@@ -22,7 +21,7 @@ css_str = """
       
 </style>
 """
-st.markdown(css_str, unsafe_allow_html= True)
+st.markdown(css_str, unsafe_allow_html=True)
 
 st.header("Training data")
 
