@@ -61,20 +61,20 @@ y_hat = col2.slider(r"Choose $\hat{y}$", 0.01, 0.99, 0.5)
 include = st.checkbox("Include function graph")
 
 
-_, col4, _ = st.columns(3)
+_, col4, _ = st.columns([0.2, 0.6, 0.2])
 
 fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(12, 4))
 
 
 
 if type.startswith("M"):
-    col4.markdown(r"$ -\ln(\hat{y}) = " + f"{abs(-np.log(y_hat)):.4f}" + r"$<br/>  <br/>",
+    col4.markdown(r"$ -(1-y)\left(\ln(1-\hat{y})\right) -y\ln(\hat{y})= -\ln(\hat{y})= " + f"{abs(-np.log(y_hat)):.4f}" + r"$<br/>  <br/>",
             unsafe_allow_html=True)
     ax1.bar([0, 1], [0, 1], **setting)
 
 
 elif type.startswith("B"):
-    col4.markdown(r"$ -\ln(1-\hat{y}) = " + f"{abs(-np.log(1-y_hat)):.4f}" + r"$<br/>  <br/>",
+    col4.markdown(r"$ -(1-y)\left(\ln(1-\hat{y})\right) -y\ln(\hat{y})= -\ln(1-\hat{y}) = " + f"{abs(-np.log(1-y_hat)):.4f}" + r"$<br/>  <br/>",
             unsafe_allow_html=True)
     ax1.bar([0, 1], [1, 0],  **setting)
     
