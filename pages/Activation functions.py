@@ -78,41 +78,41 @@ x_eval = np.linspace(0, 2, 200)
 
 fig1, ax1 = plt.subplots(1, 3, figsize=(4.2, 1.4),  )
 ax1[0].plot(x_eval, l1_w_1 * x_eval+ l1_b_1 , c="#E94235", lw=1)
-ax1[0].text(0.4, -0.9, r"$z_{1}^{[1]}= w_{11}^{[1]}x_1 + b_1^{[1]}$", 
-            fontsize=5, fontfamily="monospace")
+ax1[0].text(0.3, -0.85, r"$z_{1}^{[1]}= w_{11}^{[1]}x_1 + b_1^{[1]}$", 
+            fontsize=7, fontfamily="monospace")
 
 ax1[1].plot(x_eval, activation(l1_w_1 * x_eval+ l1_b_1, type), c="#E94235", lw=1)
-ax1[1].text(0.6, -0.9, r"$a_{1}^{[1]}= a\left(z_{1}^{[1]}\right)$",
-            fontsize=5, fontfamily="monospace")
+ax1[1].text(0.5, -0.85,  r"$a_{1}^{[1]}= a\left(z_{1}^{[1]}\right)$",
+            fontsize=7, fontfamily="monospace")
 ax1[2].plot(x_eval, l2_w_1*activation(l1_w_1 * x_eval+ l1_b_1, type), c="#E94235", lw=1)
-ax1[2].text(0.75, -0.9, r"$w_1^{[2]} a_{1}^{[1]}$", 
-            fontsize=5, fontfamily="monospace")
+ax1[2].text(0.7, -0.85, r"$w_1^{[2]} a_{1}^{[1]}$", 
+            fontsize=7, fontfamily="monospace")
 
 
 fig2, ax2 = plt.subplots(1, 3, figsize=(4.2, 1.4))
 ax2[0].plot(x_eval, l1_w_2 * x_eval+ l1_b_2, c="#6699FF", lw=1)
-ax2[0].text(0.4, -0.9, r"$z_{2}^{[1]}= w_{21}^{[1]}x_1 + b_2^{[1]}$", 
-            fontsize=5, fontfamily="monospace")
+ax2[0].text(0.3, -0.85, r"$z_{2}^{[1]}= w_{21}^{[1]}x_1 + b_2^{[1]}$", 
+            fontsize=7, fontfamily="monospace")
 
 ax2[1].plot(x_eval, activation(l1_w_2 * x_eval+ l1_b_2, type), c="#6699FF", lw=1)
-ax2[1].text(0.6, -0.9, r"$a_{2}^{[1]}= a\left(z_{2}^{[1]}\right)$", 
-            fontsize=5, fontfamily="monospace")
+ax2[1].text(0.5, -0.85, r"$a_{2}^{[1]}= a\left(z_{2}^{[1]}\right)$", 
+            fontsize=7, fontfamily="monospace")
 ax2[2].plot(x_eval, l2_w_2*activation(l1_w_2 * x_eval+ l1_b_2, type), c="#6699FF", lw=1)
-ax2[2].text(0.75, -0.9, r"$w_2^{[2]} a_{2}^{[1]}$", 
-            fontsize=5, fontfamily="monospace")
+ax2[2].text(0.7, -0.85, r"$w_2^{[2]} a_{2}^{[1]}$", 
+            fontsize=7, fontfamily="monospace")
 
 fig3, ax3 = plt.subplots(1, 3, figsize=(4.2, 1.4))
 ax3[0].plot(x_eval, l1_w_3 * x_eval+ l1_b_3, c="#F4B400" , lw=1)
-ax3[0].text(0.4, -0.9, r"$z_{3}^{[1]}= w_{31}^{[1]}x_1 + b_3^{[1]}$",  
-            fontsize=5, fontfamily="monospace")
+ax3[0].text(0.3, -0.85, r"$z_{3}^{[1]}= w_{31}^{[1]}x_1 + b_3^{[1]}$",  
+            fontsize=7, fontfamily="monospace")
 
 ax3[1].plot(x_eval, activation(l1_w_3 * x_eval+ l1_b_3, type), c="#F4B400" ,lw=1)
-ax3[1].text(0.6, -0.9, r"$a_{3}^{[1]}= a\left(z_{3}^{[1]}\right)$", 
-            fontsize=5, fontfamily="monospace")
+ax3[1].text(0.5, -0.85, r"$a_{3}^{[1]}= a\left(z_{3}^{[1]}\right)$", 
+            fontsize=7, fontfamily="monospace")
 
 ax3[2].plot(x_eval, l2_w_3*activation(l1_w_3 * x_eval+ l1_b_3, type), c="#F4B400" ,lw=1)
-ax3[2].text(0.75, -0.9, r"$w_3^{[2]} a_{3}^{[1]}$",  
-            fontsize=5, fontfamily="monospace")
+ax3[2].text(0.7, -0.85, r"$w_3^{[2]} a_{3}^{[1]}$",  
+            fontsize=7, fontfamily="monospace")
 
 for fig in [fig1, fig2, fig3]:
     fig.subplots_adjust(left=0.1,
@@ -129,7 +129,7 @@ agg_output = (l2_w_1*activation(l1_w_1 * x_eval+ l1_b_1, type) +
 
 agg_ax.plot(x_eval, agg_output, c='#FF40FF', lw=1)
 agg_ax.set_xlabel(r"$w_1^{[2]} a_{1}^{[1]}+w_2^{[2]} a_{2}^{[1]}+w_3^{[2]} a_{3}^{[1]}+b^{[2]}$", 
-                  fontsize=5, labelpad=0.5)
+                  fontsize=5.5, labelpad=0.5)
 
 agg_fig.subplots_adjust(left=0.1,
                         bottom=0.1, 
