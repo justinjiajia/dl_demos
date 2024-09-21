@@ -122,7 +122,7 @@ for fig in [fig1, fig2, fig3]:
                         wspace=0.1, 
                         hspace=0)
 
-agg_fig, agg_ax = plt.subplots(1, 1, figsize=(1, 1))
+agg_fig, agg_ax = plt.subplots(1, 1, figsize=(1.2, 1.2))
 
 agg_output = (l2_w_1*activation(l1_w_1 * x_eval+ l1_b_1, type) + 
               l2_w_2*activation(l1_w_2 * x_eval+ l1_b_2, type) + l2_w_3*activation(l1_w_3 * x_eval+ l1_b_3, type) + l2_b)
