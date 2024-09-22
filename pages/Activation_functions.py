@@ -85,34 +85,31 @@ axes1[3].text(-3, 2.5, r"$f(x)=\max(x, 0.1x)$" ,  fontsize=15, fontfamily="monos
 
 
 
-
-
-
 fig2, axes2 = plt.subplots(1, 4, figsize=(14.4, 3.4))
 
 
 
   
 axes2[0].plot(x_eval, derivative(x_eval, "sigmoid") , color='#0096ff')
-axes2[0].set(ylim=(-0.6, 0.6))
+axes2[0].set(ylim=(-1.1, 1.1))
 axes2[0].hlines(0.25, -4.2, 4.2, color='k', alpha=0.2, ls="dashed")
 
 
 
 axes2[1].plot(x_eval, derivative(x_eval, "tanh") , color='#0096ff')
-axes2[1].set(ylim=(-1.2, 1.2))
+axes2[1].set(ylim=(-1.1, 1.1))
 axes2[1].hlines(1, -4.2, 4.2, color='k', alpha=0.2, ls="dashed")
 
 axes2[2].hlines(1, -4.2, 4.2, color='k', alpha=0.2, ls="dashed")
 axes2[2].plot(x_eval[x_eval<0], derivative(x_eval[x_eval<0], "relu") , color='#0096ff')
 axes2[2].plot(x_eval[x_eval>0], derivative(x_eval[x_eval>0], "relu") , color='#0096ff')
-axes2[2].set(ylim=(-1.2, 1.2))
+axes2[2].set(ylim=(-1.1, 1.1))
 
 
 axes2[3].hlines(1, -4.2, 4.2, color='k', alpha=0.2, ls="dashed")
 axes2[3].plot(x_eval[x_eval<0], derivative(x_eval[x_eval<0], "leaky_relu") , color='#0096ff')
 axes2[3].plot(x_eval[x_eval>0], derivative(x_eval[x_eval>0], "leaky_relu") , color='#0096ff')
-axes2[3].set(ylim=(-1.2, 1.2))
+axes2[3].set(ylim=(-1.1, 1.1))
 
 for idx, (ax,  name) in enumerate(zip(axes1.flat, names)):
 
@@ -136,6 +133,7 @@ for idx, ax in enumerate(axes2.flat):
   ax.set(xlim=(-4, 4))
   ax.xaxis.set_major_locator(MultipleLocator(2.0))
   ax.xaxis.set_minor_locator(MultipleLocator(1.0))
+  ax.yaxis.set_major_locator(MultipleLocator(0.5))
   ax.tick_params(axis='both', which='major', labelsize=7, labelfontfamily="monospace", labelcolor="grey", 
                   color="grey", length=2, width=0.5, pad=0.5)
 
