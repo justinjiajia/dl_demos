@@ -131,8 +131,8 @@ for idx, (ax,  name) in enumerate(zip(axes1.flat, names)):
   
 for idx, ax in enumerate(axes2.flat):
 
-  ax.vlines(0, -4.2, 4.2, color='k', alpha=0.4)
-  ax.hlines(0, -4.2, 4.2, color='k', alpha=0.4)
+  ax.vlines(0, -4.2, 4.2, color='k', alpha=0.2)
+  ax.hlines(0, -4.2, 4.2, color='k', alpha=0.2)
   ax.set(xlim=(-4, 4))
   ax.xaxis.set_major_locator(MultipleLocator(2.0))
   ax.xaxis.set_minor_locator(MultipleLocator(1.0))
