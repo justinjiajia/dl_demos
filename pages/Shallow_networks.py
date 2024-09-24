@@ -129,7 +129,7 @@ agg_output = (l2_w_1*activation(l1_w_1 * x_eval+ l1_b_1, type) +
 
 agg_ax.plot(x_eval, agg_output, c='#FF40FF', lw=1)
 agg_ax.set_xlabel(r"$w_1^{[2]} a_{1}^{[1]}+w_2^{[2]} a_{2}^{[1]}+w_3^{[2]} a_{3}^{[1]}+b^{[2]}$", 
-                  fontsize=5.5, labelpad=0.5)
+                  fontsize=5, labelpad=0.5)
 
 agg_fig.subplots_adjust(left=0.1,
                         bottom=0.1, 
