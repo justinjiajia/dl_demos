@@ -30,7 +30,7 @@ st.markdown(css_str, unsafe_allow_html= True)
 
 type_col, _, col, _ = st.columns([0.2, 0.1, 0.6, 0.1])
 
-type = type_col.selectbox("Select activation function", ["relu", "sigmoid", "linear"])
+type = type_col.selectbox(r"Select activation function $h(z)$", ["relu", "sigmoid", "linear"])
 
 col_1, col_2, col_3, col_4 = col.columns(4)
 
