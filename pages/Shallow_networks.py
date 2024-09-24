@@ -28,7 +28,7 @@ css_str = """
 st.markdown(css_str, unsafe_allow_html= True)
 
 
-type_col, _, col, _ = st.columns([0.2, 0.1, 0.6, 0.1])
+type_col, _, col, _ = st.columns([0.25, 0.05, 0.6, 0.1])
 
 type = type_col.selectbox(r"Select activation function $h(z)$", ["relu", "sigmoid", "linear"])
 
