@@ -82,7 +82,7 @@ ax1[0].text(0.25, -0.85, r"$z_{1}^{[1]}= w_{11}^{[1]}x_1 + b_1^{[1]}$",
             fontsize=7, fontfamily="monospace")
 
 ax1[1].plot(x_eval, activation(l1_w_1 * x_eval+ l1_b_1, type), c="#E94235", lw=1)
-ax1[1].text(0.5, -0.85,  r"$a_{1}^{[1]}= a\left(z_{1}^{[1]}\right)$",
+ax1[1].text(0.5, -0.85,  r"$a_{1}^{[1]}= h\left(z_{1}^{[1]}\right)$",
             fontsize=7, fontfamily="monospace")
 ax1[2].plot(x_eval, l2_w_1*activation(l1_w_1 * x_eval+ l1_b_1, type), c="#E94235", lw=1)
 ax1[2].text(0.7, -0.85, r"$w_1^{[2]} a_{1}^{[1]}$", 
@@ -95,7 +95,7 @@ ax2[0].text(0.25, -0.85, r"$z_{2}^{[1]}= w_{21}^{[1]}x_1 + b_2^{[1]}$",
             fontsize=7, fontfamily="monospace")
 
 ax2[1].plot(x_eval, activation(l1_w_2 * x_eval+ l1_b_2, type), c="#6699FF", lw=1)
-ax2[1].text(0.5, -0.85, r"$a_{2}^{[1]}= a\left(z_{2}^{[1]}\right)$", 
+ax2[1].text(0.5, -0.85, r"$a_{2}^{[1]}= h\left(z_{2}^{[1]}\right)$", 
             fontsize=7, fontfamily="monospace")
 ax2[2].plot(x_eval, l2_w_2*activation(l1_w_2 * x_eval+ l1_b_2, type), c="#6699FF", lw=1)
 ax2[2].text(0.7, -0.85, r"$w_2^{[2]} a_{2}^{[1]}$", 
@@ -107,7 +107,7 @@ ax3[0].text(0.25, -0.85, r"$z_{3}^{[1]}= w_{31}^{[1]}x_1 + b_3^{[1]}$",
             fontsize=7, fontfamily="monospace")
 
 ax3[1].plot(x_eval, activation(l1_w_3 * x_eval+ l1_b_3, type), c="#F4B400" ,lw=1)
-ax3[1].text(0.5, -0.85, r"$a_{3}^{[1]}= a\left(z_{3}^{[1]}\right)$", 
+ax3[1].text(0.5, -0.85, r"$a_{3}^{[1]}= h\left(z_{3}^{[1]}\right)$", 
             fontsize=7, fontfamily="monospace")
 
 ax3[2].plot(x_eval, l2_w_3*activation(l1_w_3 * x_eval+ l1_b_3, type), c="#F4B400" ,lw=1)
