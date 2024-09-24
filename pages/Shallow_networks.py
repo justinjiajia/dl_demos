@@ -36,7 +36,7 @@ col_1, col_2, col_3, col_4 = col.columns(4)
 
 l2_w_1 = col_1.slider(r"Select $w_1^{[2]}$", -2.0, 2.0,  -0.8 if type == "sigmoid" else -1.3 )
 l2_w_2 = col_2.slider(r"Select $w_2^{[2]}$", -2.0, 2.0, 0.6 if type == "sigmoid" else 1.3)
-l2_w_3 = col_3.slider(r"Select $w_2^{[2]}$", -2.0, 2.0, 0.66)
+l2_w_3 = col_3.slider(r"Select $w_3^{[2]}$", -2.0, 2.0, 0.66)
 l2_b = col_4.slider(r"Select $b^{[2]}$", -2.0, 2.0, -0.23)
 
 # plt.style.use('fivethirtyeight')
