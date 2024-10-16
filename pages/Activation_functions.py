@@ -63,25 +63,25 @@ fig1, axes1 = plt.subplots(1, 4, figsize=(14.4, 3.4))
 x_eval = np.linspace(-4, 4, 200)
 names = ["Sigmoid", "Tanh", "ReLU", "Leaky ReLU"]
 
-axes1[0].plot(x_eval, activation(x_eval, "sigmoid"), color='#0096ff')
+axes1[0].plot(x_eval, activation(x_eval, "sigmoid"), color='#4285F4')
 axes1[0].set(ylim=(-1.2, 1.2))
 axes1[0].hlines(1, -4.2, 4.2, color='k', alpha=0.2, ls="dashed")
-axes1[0].text(-3, 0.68, r"$f(x)=\frac{1}{1+e^{-x}}$", c='k', fontsize=16)
+#axes1[0].text(-3, 0.68, r"$f(x)=\frac{1}{1+e^{-x}}$", c='k', fontsize=16)
 
-axes1[1].plot(x_eval, activation(x_eval, "tanh"), color='#0096ff')
+axes1[1].plot(x_eval, activation(x_eval, "tanh"), color='#4285F4')
 axes1[1].set(ylim=(-1.2, 1.2))
 axes1[1].hlines(0, -4.2, 4.2, color='k', alpha=0.2)
 axes1[1].hlines([-1, 1], [-4.2, -4.2], [4.2, 4.2], color='k', alpha=0.2, ls="dashed")
-axes1[1].text(-3.2, 0.68, r"$f(x)=\frac{1-e^{-2x}}{1+e^{-2x}}$", c='k', fontsize=16)
+# axes1[1].text(-3.2, 0.68, r"$f(x)=\frac{1-e^{-2x}}{1+e^{-2x}}$", c='k', fontsize=16)
 
 
-axes1[2].plot(x_eval, activation(x_eval, "relu"), color='#0096ff')
+axes1[2].plot(x_eval, activation(x_eval, "relu"), color='#4285F4')
 axes1[2].set(ylim=(-4.2, 4.2))
-axes1[2].text(-2.5, 2.5, r"$f(x)=\max(x, 0)$", c='k', fontsize=15,  fontfamily="monospace")
+# axes1[2].text(-2.5, 2.5, r"$f(x)=\max(x, 0)$", c='k', fontsize=15,  fontfamily="monospace")
 
-axes1[3].plot(x_eval, activation(x_eval, "leaky_relu"), color='#0096ff')
+axes1[3].plot(x_eval, activation(x_eval, "leaky_relu"), color='#4285F4')
 axes1[3].set(ylim=(-4.2, 4.2))
-axes1[3].text(-3, 2.5, r"$f(x)=\max(x, 0.1x)$" ,  fontsize=15, fontfamily="monospace")
+# axes1[3].text(-3, 2.5, r"$f(x)=\max(x, 0.1x)$" ,  fontsize=15, fontfamily="monospace")
 
 
 
@@ -90,25 +90,25 @@ fig2, axes2 = plt.subplots(1, 4, figsize=(14.4, 3.4))
 
 
   
-axes2[0].plot(x_eval, derivative(x_eval, "sigmoid") , color='#0096ff')
+axes2[0].plot(x_eval, derivative(x_eval, "sigmoid") , color='#4285F4')
 axes2[0].set(ylim=(-1.1, 1.1))
 axes2[0].hlines(0.25, -4.2, 4.2, color='k', alpha=0.2, ls="dashed")
 
 
 
-axes2[1].plot(x_eval, derivative(x_eval, "tanh") , color='#0096ff')
+axes2[1].plot(x_eval, derivative(x_eval, "tanh") , color='#4285F4')
 axes2[1].set(ylim=(-1.1, 1.1))
 axes2[1].hlines(1, -4.2, 4.2, color='k', alpha=0.2, ls="dashed")
 
 axes2[2].hlines(1, -4.2, 4.2, color='k', alpha=0.2, ls="dashed")
-axes2[2].plot(x_eval[x_eval<0], derivative(x_eval[x_eval<0], "relu") , color='#0096ff')
-axes2[2].plot(x_eval[x_eval>0], derivative(x_eval[x_eval>0], "relu") , color='#0096ff')
+axes2[2].plot(x_eval[x_eval<0], derivative(x_eval[x_eval<0], "relu") , color='#4285F4')
+axes2[2].plot(x_eval[x_eval>0], derivative(x_eval[x_eval>0], "relu") , color='#4285F4')
 axes2[2].set(ylim=(-1.1, 1.1))
 
 
 axes2[3].hlines(1, -4.2, 4.2, color='k', alpha=0.2, ls="dashed")
-axes2[3].plot(x_eval[x_eval<0], derivative(x_eval[x_eval<0], "leaky_relu") , color='#0096ff')
-axes2[3].plot(x_eval[x_eval>0], derivative(x_eval[x_eval>0], "leaky_relu") , color='#0096ff')
+axes2[3].plot(x_eval[x_eval<0], derivative(x_eval[x_eval<0], "leaky_relu") , color='#4285F4')
+axes2[3].plot(x_eval[x_eval>0], derivative(x_eval[x_eval>0], "leaky_relu") , color='#4285F4')
 axes2[3].set(ylim=(-1.1, 1.1))
 
 for idx, (ax,  name) in enumerate(zip(axes1.flat, names)):
